@@ -27,7 +27,11 @@
     "text",
     "facebook",
     "user",
-    "userid"
+    "userid",
+    "facebook-group",
+    "group-id",
+    "group",
+    "uid"
   ],
   "dependencies": {
     "https": "*",
