@@ -10,11 +10,13 @@ const argv = require('yargs')
 
 	.usage(colors.cyan.bold('\n Usage: $0 <command> [target]'))
 
-	.command('u', colors.cyan.bold('❱ ') + ' find facebook group\'s group id')
+	.command('u', colors.cyan.bold(' ❱ ') + ' find facebook group\'s group id')
 
 	.demand(['u'])
 
-	.example(colors.green.bold('$0 -u zuck'))
+	.describe('u' , '❱ group\'s name')
+
+	.example(colors.green.bold('\n$0 -u startuptalkygroup'))
 
 	.argv;
 
@@ -70,9 +72,9 @@ checkInternet(isConnected => {
 
 const req = https.request(options, res => {
 	if (res.statusCode === 200) {
-		console.log(colors.cyan.bold('\n ❱ Facebook User  :  ✔'));
+		// don't want to show anything.
 	} else {
-		console.log(colors.red.bold('\n ❱ Facebook User  :  ✖\n'));
+		// just exit
 
 		process.exit(1);
 	}
@@ -90,9 +92,9 @@ const req = https.request(options, res => {
 		const arrMatches = store.match(rePattern);
 
 		if (arrMatches && arrMatches[0]) {
-			console.log(colors.cyan.bold('\n ❱ User ID        : '), colors.green.bold(arrMatches[0].replace('entity_id":"', ''), '\n'));
+			console.log(colors.cyan.bold('\n ❱ Group ID        : '), colors.green.bold(arrMatches[0].replace('entity_id":"', ''), '\n'));
 		} else {
-			/* do nothing */
+			console.log(colors.red.bold('\n ❱ Facebook Group  :  ✖\n'));
 		}
 	});
 });
