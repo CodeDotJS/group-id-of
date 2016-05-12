@@ -34,6 +34,10 @@ $ group-id-of
 Missing required argument: u
 ```
 
+# Screenshot
+
+![group-id-of](http://rishigiri.com/github/gio.png)
+
 ## License
 
 MIT © [Rishi Giri](http://rishigiri.com)
