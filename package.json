@@ -34,10 +34,10 @@
     "uid"
   ],
   "dependencies": {
+    "colors": "*",
     "https": "*",
-    "yargs": "*",
-    "update-notifier": "*",
-    "colors": "*"
+    "log-update": "^1.0.2",
+    "update-notifier": "*"
   },
   "devDependencies": {
     "ava": "*",
