@@ -1,6 +1,15 @@
-# group-id-of
+# ![group-id-of](media/gio.png)
 
 > Shows group id of a facebook group in your console.
+
+<p align="center">
+	<img width="500" src="media/gio.gif">
+	<br>
+	<a href="https://travis-ci.org/CodeDotJS/group-id-of">
+	<img src="https://travis-ci.org/CodeDotJS/group-id-of.svg?branch=master">
+	</a>
+</p>
+
 
 ## Install
 
@@ -17,26 +26,12 @@ $ sudo npm install --global group-id-of
 ```
 $ group-id-of
 
-	Usage: group-id-of <command> [target]
+	Usage   : group-id-of <group's name>
 
-	Commands:
+	Example : group-id-of linuxscreenshots
 
-		u  ❱  find facebook group's group id
-
-	Options:
-
-		-u  ❱ group's name                     [required]
-
-	Examples:
-
-		group-id-of -u startuptalkygroup
-
-Missing required argument: u
+	Help    : group-id-of -h --help
 ```
-
-## Screenshot
-
-![group-id-of](http://rishigiri.com/github/gio.png)
 
 ## Related
 
