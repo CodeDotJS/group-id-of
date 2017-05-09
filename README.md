@@ -35,11 +35,11 @@ $ group-id-of
 
 ## Related
 
-- [facebook-id-of](https://github.com/CodeDotJS/facebook-id-of) : Find userid of a facebook user.
+- __[`facebook-id-of`](https://github.com/CodeDotJS/facebook-id-of)__ `: Find userid of a facebook user.`
 
-- [page-id-of](https://github.com/CodeDotJS/page-id-of) : Find page id of a facebook page.
+- __[`page-id-of`](https://github.com/CodeDotJS/page-id-of)__ `: Find page id of a facebook page.`
 
-- [insta-id-of](https://github.com/CodeDotJS/instagram-id-of) : Find userid of an instagram user.
+- __[`insta-id-of`](https://github.com/CodeDotJS/instagram-id-of)__ `: Find userid of an instagram user.`
 
 ## License
 

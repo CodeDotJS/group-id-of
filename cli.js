@@ -4,6 +4,7 @@
 
 const dns = require('dns');
 const https = require('https');
+const ora = require('ora');
 const logUpdate = require('log-update');
 const colors = require('colors/safe');
 
@@ -24,35 +25,34 @@ const pkg = require('./package.json');
 
 updateNotifier({pkg}).notify();
 
-const userArgs = arg;
-const pathReq = `/groups/${userArgs}`;
+const spinner = ora();
 
 const options = {
 	hostname: 'www.facebook.com',
 	port: 443,
-	path: pathReq,
+	path: `/groups/${arg}`,
 	method: 'GET',
 	headers: {
-		'accept': 'text/html,application/json,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
 		'user-agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36',
-		'Host': 'www.facebook.com',
-		'Connection': 'Keep-Alive',
 		'Accept-Language': 'en-GB,en-US;q=0.8,en;q=0.6'
 	}
 };
 
 dns.lookup('facebook.com', err => {
-	if (err && err.code === 'ENOTFOUND') {
+	if (err) {
 		logUpdate(`\n${colors.red.bold(arrow)} Please check your internet connection`);
 		process.exit(1);
 	} else {
-		logUpdate(`\n${arrow} ${colors.dim('Fetching Group\'s ID. Please wait!')}`);
+		logUpdate();
+		spinner.text = `Fetching ${arg}'s ID`;
+		spinner.start();
 	}
 });
 
 const req = https.request(options, res => {
 	if (res.statusCode === 200) {
-		logUpdate(`${colors.cyan.bold('\n›')} ${colors.yellow(arg)} ${colors.dim(`is a facebook group!`)}\n`);
+		logUpdate();
+		spinner.text = `${arg} is a Facebook group`;
 	}
 
 	let store = '';
@@ -67,10 +67,11 @@ const req = https.request(options, res => {
 		const arrMatches = store.match(rePattern);
 
 		if (arrMatches && arrMatches[0]) {
-			logUpdate();
-			console.log(`${colors.cyan.bold(`${arrow}`)} ${colors.dim('Group ID of')} ${arg} ${colors.dim('is')} ${arrMatches[0].replace('entity_id":"', '')}\n`);
+			logUpdate(`\n› ${arg}'s group id is ${arrMatches[0].replace('entity_id":"', '')}\n`);
+			spinner.stop();
 		} else {
-			logUpdate(`${colors.cyan.bold('\n›')} ${colors.dim(`Sorry "${arg}" is not a facebook group!`)}\n`);
+			logUpdate(`${colors.cyan.bold('\n›')} ${colors.dim(`Sorry "${arg}" is not a Facebook group!`)}\n`);
+			spinner.stop();
 		}
 	});
 });
